@@ -1,6 +1,6 @@
 package models;
 
-public class Payment {
+public abstract class Payment {
     private double amount;
     private String date;
     private boolean paid;
