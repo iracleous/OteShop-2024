@@ -1,7 +1,24 @@
 package services;
 
-public interface EshopService {
-    void buy();
+import models.Customer;
+import models.Payment;
+import models.PaymentMethod;
+import models.Product;
 
-    void work();
+public interface EshopService {
+
+
+    void register(Customer customer );
+    double calculateProductPrice(Product product, int quantity);
+     Payment pay(double amount, PaymentMethod paymentMethod);
+
+    //view
+    //search
+    //compare
+    //addToCart
+    //checkCart
+    //buy
+    //discount
+    //pay
+    //refund
 }

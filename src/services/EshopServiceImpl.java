@@ -1,36 +1,71 @@
 package services;
 
-import models.Customer;
-import models.Payment;
-import models.PaymentCash;
-import models.Product;
+import models.*;
 
 public class EshopServiceImpl implements EshopService {
-    @Override
-    public void buy() {
 
+    private Product product;
+    private Customer customer;
+    private Payment payment;
+
+    @Override
+    public void register(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
-    public void work() {
-        System.out.println("hello world");
-
-        Customer customer = new Customer();
-        customer.setAddress("Athens");
-        customer.setSurname("Irac");
-
-        Product product = new Product();
-        product.setPrice(20.00);
-        product.setName("chips");
-
-        double fpa = 0.24;
-        Payment payment = new PaymentCash();
-        payment.setCustomer(customer);
-        payment.setAmount(product.getPrice()*(1+fpa));
-
-        System.out.println(payment.getAmount());
-
+    public double calculateProductPrice(Product product, int quantity) {
+        this.product = product;
+        return product.getPrice() * quantity
+                - EshopHandler.discount(product.getPrice() * quantity);
     }
 
+    @Override
+    public Payment pay(double amount, PaymentMethod paymentMethod) {
+        Payment payment;
+//        switch (paymentMethod) {
+//            case PaymentMethod.CASH :
+//                payment = new PaymentCash();
+//                break;
+//            case PaymentMethod.CREDIT_CARD  :
+//                payment =  new PaymentCreditCard();
+//                break;
+//            case PaymentMethod.INSTALLMENTS  :
+//                payment = new PaymentInstallments();
+//                break;
+//            default :  return null;
+//        }
 
+//        if (paymentMethod == PaymentMethod.CASH){
+//            payment = new PaymentCash();
+//        }
+//        else  if (paymentMethod == PaymentMethod.CREDIT_CARD){
+//            payment = new PaymentCreditCard();
+//        }
+//        else  if (paymentMethod == PaymentMethod.INSTALLMENTS){
+//            payment = new PaymentInstallments();
+//        }
+//        else {
+//            return null;
+//        }
+
+       switch (paymentMethod) {
+            case PaymentMethod.CASH ->
+                    payment = new PaymentCash();
+            case PaymentMethod.CREDIT_CARD  ->
+                payment =  new PaymentCreditCard();
+             case PaymentMethod.INSTALLMENTS  ->
+                payment = new PaymentInstallments();
+            default -> {
+                        return null;
+                    }
+        }
+
+        payment.setAmount(amount);
+        this.payment = payment;
+        return payment;
+    }
 }
+
+
+

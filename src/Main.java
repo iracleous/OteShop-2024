@@ -1,4 +1,5 @@
 import models.*;
+import services.EshopHandler;
 import services.EshopService;
 import services.EshopServiceImpl;
 
@@ -7,8 +8,17 @@ import services.EshopServiceImpl;
 public class Main {
     public static void main(String[] args) {
 
-       EshopService service = new EshopServiceImpl();
-       service.work();
+      // EshopService service = new EshopServiceImpl();
+      // service.work();
+
+
+       Customer customer = new Customer();
+       customer.setSurname("Ira");
+        System.out.println(customer);
+
+
+        EshopHandler.work();
+
 
     }
 }

@@ -1,6 +1,6 @@
 package models;
 
-public class Customer {
+public class Customer  {
 
     private String customerName;
     private String surname;
@@ -64,5 +64,18 @@ public class Customer {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+ @Override
+    public String toString() {
+        return "Customer{" +
+                "customerName='" + customerName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address='" + address + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", balance=" + balance +
+                ", tel='" + tel + '\'' +
+                '}';
     }
 }
