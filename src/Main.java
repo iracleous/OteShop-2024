@@ -1,3 +1,7 @@
+import models.Customer;
+import models.PaymentCash;
+import models.Product;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -13,7 +17,7 @@ public class Main {
         product.setName("chips");
 
         double fpa = 0.24;
-        Payment payment = new Payment();
+        PaymentCash payment = new PaymentCash();
         payment.setCustomer(customer);
         payment.setAmount(product.getPrice()*(1+fpa));
 

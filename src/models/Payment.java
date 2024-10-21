@@ -1,11 +1,11 @@
-
+package models;
 
 public class Payment {
-
     private double amount;
     private String date;
     private boolean paid;
     private Customer customer;
+    private int id;
 
     public double getAmount() {
         return amount;
@@ -37,5 +37,13 @@ public class Payment {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
